@@ -71,13 +71,13 @@ const filterSlice = createSlice({
       const [both] = action.payload;
       return { both };
     },
-    filterSortCode: (_filter, action) => {
+    filterSortCode: (filter, action) => {
       const [asc = true] = action.payload;
-      return { sort: 'code', asc };
+      return { ...filter, sort: 'code', asc };
     },
-    filterSortUrl: (_filter, action) => {
+    filterSortUrl: (filter, action) => {
       const [asc = true] = action.payload;
-      return { sort: 'url', asc };
+      return { ...filter, sort: 'url', asc };
     },
   },
 });
