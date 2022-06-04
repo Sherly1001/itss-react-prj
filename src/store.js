@@ -98,17 +98,17 @@ const selectFilteredUrls = createSelector(
     let filteredUrls = urls;
     if (filter.url) {
       filteredUrls = urls.filter((u) =>
-        new RegExp(filter.url, 'i').test(u.url)
+        u.url.toLowerCase().includes(filter.url.toLowerCase())
       );
     } else if (filter.code) {
       filteredUrls = urls.filter((u) =>
-        new RegExp(filter.code, 'i').test(u.code)
+        u.code.toLowerCase().includes(filter.code.toLowerCase())
       );
     } else if (filter.both) {
       filteredUrls = urls.filter(
         (u) =>
-          new RegExp(filter.url, 'i').test(u.url) ||
-          new RegExp(filter.code, 'i').test(u.code)
+          u.url.toLowerCase().includes(filter.url.toLowerCase()) ||
+          u.code.toLowerCase().includes(filter.code.toLowerCase())
       );
     }
 
