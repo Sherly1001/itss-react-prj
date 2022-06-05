@@ -1,5 +1,6 @@
 import { configureStore, createSelector, createSlice } from '@reduxjs/toolkit';
 import { useSelector } from 'react-redux';
+import { validateCode, validateUrl } from './utils';
 
 const storedUrls = JSON.parse(localStorage.getItem('urls')) || [];
 
@@ -9,6 +10,15 @@ const urlSlice = createSlice({
   reducers: {
     addUrl: (urls, action) => {
       const [url, code] = action.payload;
+
+      if (!validateUrl(url)) {
+        throw `url ${url} is invalid`;
+      }
+
+      if (!validateCode(code)) {
+        throw `code ${code} is invalid`;
+      }
+
       const newUrls = [...urls, { url, code }];
 
       const idx = urls.findIndex((u) => u.code === code);
@@ -29,6 +39,15 @@ const urlSlice = createSlice({
 
     updateUrl: (urls, action) => {
       const [oldCode, { url, code }] = action.payload;
+
+      if (!validateUrl(url)) {
+        throw `url ${url} is invalid`;
+      }
+
+      if (!validateCode(code)) {
+        throw `code ${code} is invalid`;
+      }
+
       const idx = urls.findIndex((u) => u.code === oldCode);
 
       if (idx < 0) {
