@@ -1,0 +1,31 @@
+.list-urls {
+  padding: 0.5em;
+  overflow-y: scroll;
+
+  .list-header {
+    top: 0;
+    position: sticky;
+    position: -webkit-sticky;
+  }
+
+  .url-item {
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+    display: grid;
+    grid-template-columns: 1fr 5fr 2fr 3fr 2fr;
+    border-radius: 0.2em;
+    border: solid 0.1rem darkgray;
+    transition: box-shadow 0.1s;
+
+    * {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &:not(:first-child):hover {
+      box-shadow: 0.5em 0.5em 2em gray;
+      cursor: pointer;
+    }
+  }
+}
