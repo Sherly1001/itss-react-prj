@@ -14,9 +14,13 @@ const ListUrls = ({ className }) => {
         <div>Code</div>
         <div>URL shortened</div>
       </div>
-      {filteredUrls.map((u, i) => (
-        <UrlItem key={u.code} no={i + 1} url={u} />
-      ))}
+      {filteredUrls.length > 0 ? (
+        filteredUrls.map((u, i) => <UrlItem key={u.code} no={i + 1} url={u} />)
+      ) : (
+        <div className="text-5xl font-black text-gray-500 text-center mt-48">
+          No data
+        </div>
+      )}
     </div>
   );
 };
