@@ -1,6 +1,7 @@
 import { configureStore, createSelector, createSlice } from '@reduxjs/toolkit';
 import { useSelector } from 'react-redux';
 import { validateCode, validateUrl } from './utils';
+import { createUrl, updateUrl } from './utils/api';
 
 const storedUrls = JSON.parse(localStorage.getItem('urls')) || [];
 
@@ -156,6 +157,21 @@ export const useStore = () => {
 
   const states = useSelector((state) => state);
   const filteredUrls = useSelector(selectFilteredUrls);
+
+  const oldAddUrl = actions['addUrl'];
+
+  actions['addUrl'] = async (url, code) => {
+    const res = await createUrl(code, url);
+    return oldAddUrl(res.url, res.code);
+  };
+
+  const oldUpdateUrl = actions['updateUrl'];
+
+  actions['updateUrl'] = async (oldCode, { code, url }) => {
+    const res = await updateUrl(oldCode, { code, url });
+    console.log(res);
+    return oldUpdateUrl(oldCode, { url: res.url, code: res.code });
+  };
 
   return { ...states, filteredUrls, ...actions };
 };
