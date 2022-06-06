@@ -169,7 +169,6 @@ export const useStore = () => {
 
   actions['updateUrl'] = async (oldCode, { code, url }) => {
     const res = await updateUrl(oldCode, { code, url });
-    console.log(res);
     return oldUpdateUrl(oldCode, { url: res.url, code: res.code });
   };
 
