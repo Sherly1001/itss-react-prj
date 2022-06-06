@@ -28,7 +28,7 @@ jobs:
     - name: Install and build
       run: |
         yarn install
-        yarn build --base=${{ github.event.repository.name }}
+        yarn build --base=/${{ github.event.repository.name }}/
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4.3.3
       with:
