@@ -29,11 +29,11 @@ function Filter(props) {
   }
 
   return (
-	<div className="list-header bg-gray-400">
-		<input placeholder='番号' onChange={(e) => processKeyDown(e, 0)} ref={no}/>
-		<input placeholder='URL' onChange={(e) => processKeyDown(e, 1)} ref={url}/>
-		<input placeholder='コード' onChange={(e) => processKeyDown(e, 2)} ref={code}/>
-		<input placeholder='SURL' onChange={(e) => processKeyDown(e, 3)} ref={surl}/>
+	<div className="list-header url-item">
+		<input className='bg-blue-100' placeholder='番号' onChange={(e) => processKeyDown(e, 0)} ref={no}/>
+		<input className='bg-blue-100' placeholder='URL' onChange={(e) => processKeyDown(e, 1)} ref={url}/>
+		<input className='bg-blue-100' placeholder='コード' onChange={(e) => processKeyDown(e, 2)} ref={code}/>
+		<input className='bg-blue-100' disabled hidden  placeholder='省略URL' onChange={(e) => processKeyDown(e, 3)} ref={surl}/>
 	</div>
   );
 }
