@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useStore } from '../../store';
 import Filter from './Filter';
 import UrlItem from './urlItem';
@@ -8,9 +8,15 @@ import menuIcon from './menu-icon.svg';
 import closeIcon from './close-icon.svg';
 
 const ListUrls = ({ className }) => {
-  const { filteredUrls } = useStore();
+  const { filteredUrls, filterDelete } = useStore();
 
   const [showFilter, setShowFilter] = useState(false);
+
+  useEffect(() => {
+    if (!showFilter) {
+      filterDelete();
+    }
+  }, [showFilter]);
 
   return (
     <div className={'list-urls ' + className}>
