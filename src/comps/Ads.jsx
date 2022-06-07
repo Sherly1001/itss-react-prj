@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const Ads = ({ className }) => {
   const imgUrls = [
@@ -7,12 +7,12 @@ const Ads = ({ className }) => {
     'https://images8.alphacoders.com/112/thumbbig-1129503.webp',
   ]
   const [url, setUrl] = useState(0);
-  
-useEffect(() => {
-  setTimeout(() => {
-    setUrl(url === imgUrls.length - 1 ? 0 : url + 1)
-  }, 3000)
-}, [url])
+
+  useEffect(() => {
+    setTimeout(() => {
+      setUrl(url === imgUrls.length - 1 ? 0 : url + 1)
+    }, 3000)
+  }, [url])
 
   return <div className={'ads ' + className}>
     <img src={imgUrls[url]}></img>
