@@ -8,7 +8,8 @@ const NewUrlForm = ({ className }) => {
 
   const { addUrl } = useStore();
 
-  const onSubmit = async () => {
+  const onSubmit = async (e) => {
+    e.preventDefault();
     try {
       setErr(null);
       await addUrl(url, code);
