@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import './Footer.scss';
-function Footer (props) {
-
+function Footer(props) {
   const [text, setText] = useState('default');
   const [x, setX] = useState(0);
 
-  useEffect(() => {
-    
-  });
+  useEffect(() => {});
 
-  return(
+  return (
     <div className={props.className}>
       <div className="footer--div1">
         <div className="footer--topic">
-          <b className='test'>ITSS  日本語  金２</b>
+          <b className="test">ITSS 日本語 金２</b>
         </div>
         <div className="footer--topic">
           <b className="footer--font">グループ6</b>

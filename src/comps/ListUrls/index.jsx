@@ -1,10 +1,16 @@
+import { useState } from 'react';
 import { useStore } from '../../store';
+import Filter from './Filter';
 import UrlItem from './urlItem';
-
 import './index.scss';
+
+import menuIcon from './menu-icon.svg';
+import closeIcon from './close-icon.svg';
 
 const ListUrls = ({ className }) => {
   const { filteredUrls } = useStore();
+
+  const [showFilter, setShowFilter] = useState(false);
 
   return (
     <div className={'list-urls ' + className}>
@@ -13,7 +19,14 @@ const ListUrls = ({ className }) => {
         <div>Long URI</div>
         <div>Code</div>
         <div>URL shortened</div>
+        <div className="flex justify-end">
+          <img
+            src={showFilter ? closeIcon : menuIcon}
+            onClick={() => setShowFilter(!showFilter)}
+          />
+        </div>
       </div>
+      {showFilter && <Filter className="url-item" />}
       {filteredUrls.length > 0 ? (
         filteredUrls.map((u, i) => <UrlItem key={u.code} no={i + 1} url={u} />)
       ) : (

@@ -79,25 +79,21 @@ const filterSlice = createSlice({
     filterDelete: (_filter, _action) => {
       return null;
     },
-    filterByUrl: (_filter, action) => {
+    filterByUrl: (filter, action) => {
       const [url] = action.payload;
-      return { url };
+      return { ...filter, url };
     },
-    filterByCode: (_filter, action) => {
+    filterByCode: (filter, action) => {
       const [code] = action.payload;
-      return { code };
+      return { ...filter, code };
     },
-    filterByBoth: (_filter, action) => {
+    filterByBoth: (filter, action) => {
       const [both] = action.payload;
-      return { both };
+      return { ...filter, both };
     },
     filterSortCode: (filter, action) => {
       const [asc = true] = action.payload;
-      return { ...filter, sort: 'code', asc };
-    },
-    filterSortUrl: (filter, action) => {
-      const [asc = true] = action.payload;
-      return { ...filter, sort: 'url', asc };
+      return { ...filter, sortCode: asc };
     },
   },
 });
@@ -117,14 +113,18 @@ const selectFilteredUrls = createSelector(
 
     let filteredUrls = urls;
     if (filter.url) {
-      filteredUrls = urls.filter((u) =>
+      filteredUrls = filteredUrls.filter((u) =>
         u.url.toLowerCase().includes(filter.url.toLowerCase())
       );
-    } else if (filter.code) {
-      filteredUrls = urls.filter((u) =>
+    }
+
+    if (filter.code) {
+      filteredUrls = filteredUrls.filter((u) =>
         u.code.toLowerCase().includes(filter.code.toLowerCase())
       );
-    } else if (filter.both) {
+    }
+
+    if (filter.both) {
       filteredUrls = urls.filter(
         (u) =>
           u.url.toLowerCase().includes(filter.url.toLowerCase()) ||
@@ -132,11 +132,11 @@ const selectFilteredUrls = createSelector(
       );
     }
 
-    if (filter.sort) {
-      const sign = filter.asc ? 1 : -1;
+    if (filter.sortCode !== null) {
+      const sign = filter.sortCode ? 1 : -1;
       const copyArr = [...filteredUrls];
       filteredUrls = copyArr.sort((a, b) => {
-        return a[filter.sort] > b[filter.sort] ? sign : -sign;
+        return a['code'] > b['code'] ? sign : -sign;
       });
     }
 
