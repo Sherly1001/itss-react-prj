@@ -13,7 +13,7 @@ const App = () => {
         <Ads className="bg-yellow-200 md:row-start-2" />
         <ListUrls className="bg-blue-200 md:col-span-2 md:row-span-2" />
       </div>
-      <Footer className="bg-red-200" />
+      <Footer className='bg-red-200 footer'/>
     </div>
   );
 };
