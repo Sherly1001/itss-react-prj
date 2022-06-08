@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useStore } from '../store';
 
-const NewUrlForm = ({ className }) => {
+const NewUrlForm = ({ className = '' }) => {
   const [url, setUrl] = useState('');
   const [code, setCode] = useState('');
   const [err, setErr] = useState(null);

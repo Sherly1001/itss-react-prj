@@ -2,7 +2,7 @@ import { useStore } from '../store';
 
 import './Header.scss';
 
-const Header = ({ className }) => {
+const Header = ({ className = '' }) => {
   window['sher'] = useStore();
 
   return (
