@@ -33,7 +33,7 @@ function Filter(props) {
   }
 
   return (
-    <div className="list-filter url-item">
+    <div className="filter-item url-item bg-red-200">
       <input
         className="bg-blue-100"
         placeholder="番号"
