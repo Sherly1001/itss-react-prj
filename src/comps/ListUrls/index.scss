@@ -2,6 +2,21 @@
   padding: 0.5em;
   overflow-y: scroll;
 
+  &::-webkit-scrollbar {
+    width: 0.5em;
+  }
+  &::-webkit-scrollbar-track {
+    background: rgb(254 240 138);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgb(239 68 68);
+    cursor: pointer;
+
+    &:hover {
+      background: rgb(220 38 38);
+    }
+  }
+
   .list-header {
     top: 0;
     position: sticky;
