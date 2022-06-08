@@ -5,41 +5,31 @@ import './index.scss';
 import Filter from '../Filter/filter';
 import { useEffect, useState } from 'react';
 
-
 const ListUrls = ({ className }) => {
-  // const { allUrls } = useStore();
-  const allUrls = [
-    {url: "cdscs.com", code: "cdnskcnsdk"},
-    {url: "rewfre.com", code: "3d2"},
-    {url: "bgf.com", code: "t5g54"},
-    {url: "cdsbfbgfcs.com", code: "64gr"},
-    {url: "iutuyt.com", code: "nmjg"},
-  ]
+  const { urls } = useStore();
 
-  const [option, setOption] = useState(null)
+  const [option, setOption] = useState(null);
   // Contains {No, url, code, surl}
 
   function qualified(item) {
-    let result = 1
+    let result = 1;
     if (option != null) {
       if (item.url.length) {
-        result = result && item.url.includes(option.url)
+        result = result && item.url.includes(option.url);
       }
       if (item.code) {
-        result = result && item.code.includes(option.code)
+        result = result && item.code.includes(option.code);
       }
     }
-    return result
+    return result;
   }
 
-  const [filterList, setFilterList] = useState(allUrls)
+  const [filterList, setFilterList] = useState(urls);
 
-  useEffect(()=>{
-    // TODO: Update filter list here
-    let new_list = allUrls.slice(option?.no).filter(item => qualified(item))
-    console.log(new_list)
-    setFilterList(new_list)
-  }, [option])
+  useEffect(() => {
+    let new_list = urls.slice(option?.no).filter(qualified);
+    setFilterList(new_list);
+  }, [option, urls]);
 
   return (
     <div className={'list-urls ' + className}>
@@ -49,8 +39,8 @@ const ListUrls = ({ className }) => {
         <div>Code</div>
         <div>URL shortened</div>
       </div>
-      
-      <Filter setter={setOption}/>
+
+      <Filter setter={setOption} />
 
       {filterList.length > 0 ? (
         filterList.map((u, i) => <UrlItem key={u.code} no={i + 1} url={u} />)
