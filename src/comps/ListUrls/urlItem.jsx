@@ -49,7 +49,7 @@ const UrlItem = ({ no, url }) => {
           {url.url}
         </a>
         <input
-          placeholder="enter url"
+          placeholder="URLを入力"
           value={newUrl}
           onChange={(e) => setNewUrl(e.target.value)}
           onKeyDown={onKeydown}
@@ -58,7 +58,7 @@ const UrlItem = ({ no, url }) => {
       <div className="code">
         <span>{url.code}</span>
         <input
-          placeholder="enter code"
+          placeholder="コードを入力"
           value={newCode}
           ref={inputForm}
           onChange={(e) => setNewCode(e.target.value)}
@@ -92,13 +92,13 @@ const UrlItem = ({ no, url }) => {
             className="bg-yellow-500 hover:bg-yellow-600"
             onClick={() => onUpdateUrl(true)}
           >
-            cancel
+            キャンセル
           </div>
           <div
             className="bg-red-500 hover:bg-red-600"
             onClick={() => onUpdateUrl(false)}
           >
-            OK
+            オーケー
           </div>
         </div>
         <div className="confirm-delete">
@@ -106,13 +106,13 @@ const UrlItem = ({ no, url }) => {
             className="bg-yellow-500 hover:bg-yellow-600"
             onClick={() => setIsDelete(false)}
           >
-            cancel
+            キャンセル
           </div>
           <div
             className="bg-red-500 hover:bg-red-600"
             onClick={() => deleteUrl(url.code)}
           >
-            OK
+            オーケー
           </div>
         </div>
       </div>

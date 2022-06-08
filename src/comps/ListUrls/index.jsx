@@ -34,10 +34,10 @@ const ListUrls = ({ className }) => {
   return (
     <div className={'list-urls ' + className}>
       <div className="list-header url-item bg-gray-400">
-        <div>No.</div>
-        <div>Long URI</div>
-        <div>Code</div>
-        <div>URL shortened</div>
+        <div>番号.</div>
+        <div>長いURL</div>
+        <div>コード</div>
+        <div>短縮されたURL</div>
       </div>
 
       <Filter setter={setOption} />
