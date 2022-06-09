@@ -6,5 +6,5 @@ export const validateUrl = (url) => {
 };
 
 export const validateCode = (code) => {
-  return code && /^\w+$/.test(code);
+  return code && /^[\w_-]+$/.test(code);
 };
